@@ -9,21 +9,21 @@
                             class="mb-0">
                             <b-form-group label="Name:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.name" id="name"></b-form-input>
+                                <b-form-input type="text" v-model="form.name"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="City:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.city" id="city"></b-form-input>
+                                <b-form-input type="text" v-model="form.city"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="Country:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.country" id="country"></b-form-input>
+                                <b-form-input type="text" v-model="form.country"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="Tel:" label-cols-sm="3" label-align-sm="right">
-                                <b-form-input type="text" v-model="form.tel" id="tel"></b-form-input>
+                                <b-form-input type="text" v-model="form.tel"></b-form-input>
                             </b-form-group>
 
                             <b-button type="submit" variant="primary" >Submit</b-button>
@@ -61,12 +61,7 @@ import user from '../repository/user'
         },
         methods: {
             onSubmit() {
-                // form.preventDefault()
-                // alert(JSON.stringify(this.form))
                 this.$store.dispatch("getContact", this.form)
-                // form.push(form)
-                // this.form = ''
-                // alert('Send')
             },
             onReset() {
                 // e.preventDefault()
@@ -74,11 +69,6 @@ import user from '../repository/user'
                 this.form.city = ''
                 this.form.country = ''
                 this.form.tel = ''
-
-                // this.show = false
-                // this.$nextTick(() => {
-                //     this.show = true
-                // })
             },
             plusUser(){
                 user.getUser().then(resp => {

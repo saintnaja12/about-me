@@ -31,17 +31,17 @@ const routes = [
   {
     path: '/table/tableApi',
     name: 'TableApi',
-    component: () => import('../components/TableApi.vue')
+    component: () => import('../components/TableApi/TableApi.vue')
   },
   {
     path: '/table/tableApi2',
     name: 'TableApi2',
-    component: () => import('../components/TableApi2.vue')
+    component: () => import('../components/TableApi/TableApi2.vue')
   },
   {
     path: '/table/tableApi3',
     name: 'TableApi3',
-    component: () => import('../components/TableApi3.vue')
+    component: () => import('../components/TableApi/TableApi3.vue')
   },
 ]
 

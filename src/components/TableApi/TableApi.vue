@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import user from '../repository/user'
+import user from '@/repository/user'
 
 export default {
     name: 'TableApi',

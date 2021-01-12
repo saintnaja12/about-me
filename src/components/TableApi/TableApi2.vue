@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import post from '../repository/post'
+import post from '@/repository/post'
 
 export default {
     name: 'TableApi2',
