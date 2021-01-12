@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h1>Table API 2</h1>
-        <b-button type="button" variant="success" @click="plusPost">GET API</b-button>
+        <h1>Table API 2 (TestApi)</h1>
+        <!-- <b-button type="button" variant="success" @click="plusPost">GET API</b-button> -->
         <!-- {{lists}} -->
         <!-- <b-table striped hover :lists="lists" :fields="fields"></b-table> -->
         <hr>
         
-        <b-pagination
+        <b-button type="button" @click="getUser()">Get user from API</b-button>
+        {{user}}
+        <!-- <b-pagination
             v-model="currentPage"
             :total-rows="rows"
             :per-page="perPage"
@@ -19,12 +21,16 @@
             :per-page="perPage"
             :current-page="currentPage"
             small
-        ></b-table>
+        ></b-table> -->
+
+
     </div>
 </template>
 
 <script>
 import post from '@/repository/post'
+
+import {mapState, mapActions} from 'vuex'
 
 export default {
     name: 'TableApi2',
@@ -38,42 +44,25 @@ export default {
     },
     methods: {
         plusPost(){
-            // post.getPost()
-            // .then(resp => resp.json())
-            // .then(json => 
-            //     this.lists = json.data
-            //     .map(post => {
-            //         return {
-            //             id: post.id,
-            //             title: post.title,
-            //             body: post.body
-            //         }
-            //     })
-            // )
             post.getPost().then(resp => {
                 console.log(resp);
                 this.lists = resp.data
             })
         },
-        // paginate(page_size, page_number) {
-        //     let listsToParse = this.lists;
-        //     this.paginatedlists = listsToParse.slice(
-        //         page_number * page_size,
-        //         (page_number + 1) * page_size
-        //     );
-        // },
-        // onPageChanged(page) {
-        //     this.paginate(this.perPage, page - 1);
-        // }
+        ...mapActions({
+            getUser: 'getUser'
+        })
     },
-    mounted(){
-        this.plusPost();
-        // this.paginate(this.perPage, 0);
-    },
+    // mounted(){
+    //     this.plusPost();
+    // },
     computed: {
-      rows() {
-        return this.lists.length
-      }
+        rows() {
+            return this.lists.length
+        },
+        ...mapState({
+            user: state => state.user
+        })  
     }
 }
 </script>

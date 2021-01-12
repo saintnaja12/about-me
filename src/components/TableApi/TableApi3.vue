@@ -41,7 +41,7 @@
                     <b-form @submit.stop.prevent="handleSubmit">
                         <b-form-group
                             label="Food name"
-                            :state="name"
+                            
                         >
                             <b-form-input
                                 type="text"
@@ -53,7 +53,7 @@
                         </b-form-group>
                         <b-form-group
                             label="Food price"
-                            :state="price"
+                            
                         >
                             <b-form-input
                                 type="number"
@@ -94,18 +94,18 @@ export default {
     store,
     data(){
         return{
-            // foodList:{
+            foodList:{
                 name: '',
                 price: 0,
-            // },
+            },
             submittedNames: []
         }
     },
     methods:{
-        onSubmit(event) {
-            event.preventDefault()
-            alert(JSON.stringify(this.form))
-        },
+        // onSubmit(event) {
+        //     event.preventDefault()
+        //     alert(JSON.stringify(this.form))
+        // },
         resetModal() {
             this.name = ''
             this.price = 0
@@ -118,8 +118,8 @@ export default {
         },
         handleSubmit() {
             
-            const payload = {name: this.name, price: this.price}
-            this.$store.dispatch("addFood", payload)
+            // const payload = {name: this.name, price: this.price}
+            this.$store.dispatch("addFood", this.foodList)
 
             // Push the name to submitted names
             // this.submittedNames.push(this.name) + this.submittedNames.push(this.price)

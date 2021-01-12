@@ -5,14 +5,14 @@ const actions = {
 }
 
 const mutations = {
-    GET_CONTACT(payload){
+    GET_CONTACT(state, payload){
         // console.log(state.form == payload);
         state.form.push(payload)
     }
 }
 
 const state = {
-    form: {},
+    form: []
 }
 
 const getters = {

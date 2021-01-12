@@ -15,7 +15,9 @@ const state = {
 }
 
 const getters = {
-    foods: state => state.foods
+    foods: state => {
+        return state.foods
+    }
 }
 
 export default {

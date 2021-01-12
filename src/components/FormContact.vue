@@ -9,21 +9,21 @@
                             class="mb-0">
                             <b-form-group label="Name:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.name"></b-form-input>
+                                <b-form-input type="text" v-model="form.name" id="name"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="City:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.city"></b-form-input>
+                                <b-form-input type="text" v-model="form.city" id="city"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="Country:" label-cols-sm="3"
                                 label-align-sm="right">
-                                <b-form-input type="text" v-model="form.country"></b-form-input>
+                                <b-form-input type="text" v-model="form.country" id="country"></b-form-input>
                             </b-form-group>
 
                             <b-form-group label="Tel:" label-cols-sm="3" label-align-sm="right">
-                                <b-form-input type="text" v-model="form.tel"></b-form-input>
+                                <b-form-input type="text" v-model="form.tel" id="tel"></b-form-input>
                             </b-form-group>
 
                             <b-button type="submit" variant="primary" >Submit</b-button>
@@ -51,10 +51,10 @@ import user from '../repository/user'
         data() {
             return {
                 form: {
-                  name: "",
-                  city: "",
-                  country: "",
-                  tel: "",
+                    name: "",
+                    city: "",
+                    country: "",
+                    tel: "",
                 },
                 list: []
             }
