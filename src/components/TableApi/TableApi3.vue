@@ -135,11 +135,7 @@ export default {
         }
     },
     methods:{
-        // alert
-        onSubmit(event) {
-            event.preventDefault()
-            alert(JSON.stringify(this.form))
-        },
+        
         resetModal() {
             this.name = ''
             this.price = 0

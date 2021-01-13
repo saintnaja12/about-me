@@ -1,3 +1,4 @@
+import postRepo from '@/repository/post'
 
 // import UserService from '@/repository/post.js'
 // const userService = new UserService()
@@ -7,6 +8,16 @@ const actions = {
     //     const data = await userService.getUser();
     //     commit('SET_USER',data)
     // }
+
+    addPost(payload){
+        console.log(payload);
+        return postRepo.createPost(payload).then( resp => {
+            return resp
+        }).catch( err => {
+            throw err
+        })
+  
+    }
 }
 
 const mutations = {
@@ -27,10 +38,8 @@ const getters = {
 }
 
 export default {
-    // key:{
-        actions,
-        mutations,
-        state,
-        getters
-    // }
+    actions,
+    mutations,
+    state,
+    getters
 }

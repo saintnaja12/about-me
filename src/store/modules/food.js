@@ -1,12 +1,8 @@
-import postRepo from '@/repository/post'
 
 const actions = {
-    addFood(payload){
-        return postRepo.createPost(payload).then( resp => {
-            return resp
-        }).catch( err => {
-            throw err
-        })
+    addFood({ commit }, payload){
+        console.log(payload)
+        commit("ADD_FOOD", {payload})
     },
     delFood({ commit }, index){
         commit("DEL_FOOD", {index})

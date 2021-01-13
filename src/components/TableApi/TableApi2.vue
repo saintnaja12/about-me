@@ -37,21 +37,26 @@
                 </b-col>
             </b-row>
 
-            <b-modal id="formApi" title="Post API">
-                <b-form>
-
-                    <b-form-group label="Title">
-                        <b-form-input type="text" v-model="name">
+            <b-modal 
+                id="formApi" 
+                title="Post API" 
+                ref="modal"
+                @ok="handleOk"
+                @show="resetModal"
+                @click="resetModal"
+            >
+                <b-form @submit.stop.prevent="submitPost">
+                    <b-form-group label="Title" >
+                        <b-form-input type="text" v-model="title" id="title">
 
                         </b-form-input>
                     </b-form-group>
 
                     <b-form-group label="Body">
-                        <b-form-input type="text" v-model="price">
+                        <b-form-input type="text" v-model="body" id="body">
 
                         </b-form-input>
                     </b-form-group>
-
                 </b-form>
             </b-modal>
 
@@ -80,24 +85,46 @@
                 }],
                 currentPage: 1,
 
+                userId: 0,
+                id: 0,
                 title: '',
                 body: ''
+
             }
         },
         methods: {
+
+            //GET API
             plusPost() {
                 post.getPost().then(resp => {
-                    console.log(resp.data);
                     this.lists = resp.data
                 })
             },
+            resetModal() {
+                this.title = ''
+                this.body = ''
+            },
+            //POST API
+            handleOk(bvModalEvt) {
+                bvModalEvt.preventDefault()
+                this.submitPost()
+            },
+            submitPost() {
+                let payload = {
+                    userId: this.userId,
+                    id: this.id,
+                    title: this.title, 
+                    body: this.body
+                }
+                this.$store.dispatch("addPost", payload)
+            },
+
             // ...mapActions({
             //     getUser: 'getUser'
             // })
         },
         mounted() {
             this.plusPost();
-            // this.getUser()
         },
         computed: {
             rows() {
