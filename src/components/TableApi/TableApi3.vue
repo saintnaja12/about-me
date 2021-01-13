@@ -26,6 +26,8 @@
                     </b-navbar>
                 </b-card-body>
             
+                <!-- MODAL START -->
+
                 <b-modal 
                     id="orderFood" 
                     title="Add food"
@@ -61,8 +63,12 @@
                     </b-form>
                 </b-modal>
 
+                <!-- MODAL END -->
+
                 <b-container>
                     <b-card b-card no-body>
+
+                        <!-- TABLE START -->
 
                         <b-table-simple responsive bordered striped hover >
                             <b-thead>
@@ -108,6 +114,7 @@
                             </b-tbody>
                         </b-table-simple>
                         
+                        <!-- TABLE END -->
                         
                     </b-card>
                 </b-container>
