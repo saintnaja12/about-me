@@ -59,7 +59,6 @@
                             >
                             </b-form-input>
                         </b-form-group>
-
                     </b-form>
                 </b-modal>
 
