@@ -1,40 +1,37 @@
 import postRepo from '@/repository/post'
 
-// import UserService from '@/repository/post.js'
-// const userService = new UserService()
-
 const actions = {
-    // async getUser ({commit}) {
-    //     const data = await userService.getUser();
-    //     commit('SET_USER',data)
+    // addPost(payload){
+    //     return postRepo.createPost(payload).then( resp => {
+    //         return resp
+    //     }).catch( err => {
+    //         throw err
+    //     })
     // }
-
-    addPost(payload){
-        console.log(payload);
-        return postRepo.createPost(payload).then( resp => {
-            return resp
-        }).catch( err => {
+    addPost({commit},payload) {
+        // console.log(payload);
+        postRepo.createPost(payload).then(resp=>{
+            console.log(resp);
+            commit("ADD_POST", {payload})
+        }).catch(err =>{
             throw err
         })
-  
-    }
+        
+    },
 }
 
 const mutations = {
-    // SET_USER(state, data) {
-    //     state.user = data
-    //     console.log(state.user);
-    // }
+    ADD_POST(state, {payload}){
+      state.apiPost.push(payload)
+    }
 }
 
 const state = {
-    // user: []
+    apiPost: []
 }
 
 const getters = {
-    // gettersUser : state =>{
-    //     return state.user
-    // }
+    apiPost: state => state.apiPost
 }
 
 export default {

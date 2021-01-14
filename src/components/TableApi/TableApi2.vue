@@ -29,6 +29,7 @@
                     <b-form-group>
                         <b-button v-b-modal.formApi variant="primary">Post API</b-button>
                     </b-form-group>
+                    {{apiPost}}
                 </b-col>
                 <b-col>
                     <b-table id="my-table" :items="lists" :per-page="perPage" :current-page="currentPage" small
@@ -45,15 +46,21 @@
                 @show="resetModal"
                 @click="resetModal"
             >
-                <b-form @submit.stop.prevent="submitPost">
+                <b-form @submit.stop.prevent="submitPost" method="post">
+                     <!-- <b-form-group label="userId">
+                        <b-form-input type="number" v-model="form.userId" id="userId">
+
+                        </b-form-input>
+                    </b-form-group> -->
+
                     <b-form-group label="Title" >
-                        <b-form-input type="text" v-model="title" id="title">
+                        <b-form-input type="text" v-model="form.title" id="title">
 
                         </b-form-input>
                     </b-form-group>
 
                     <b-form-group label="Body">
-                        <b-form-input type="text" v-model="body" id="body">
+                        <b-form-input type="text" v-model="form.body" id="body">
 
                         </b-form-input>
                     </b-form-group>
@@ -77,7 +84,6 @@
         data() {
             return {
                 lists: [],
-                fields: ['Id', 'Name', 'Username'],
                 perPage: 10,
                 pageOptions: [5, 10, 15, {
                     value: 100,
@@ -85,11 +91,11 @@
                 }],
                 currentPage: 1,
 
-                userId: 0,
-                id: 0,
-                title: '',
-                body: ''
-
+                form:{
+                    // userId: 0,
+                    title: '',
+                    body: ''
+                }
             }
         },
         methods: {
@@ -101,6 +107,7 @@
                 })
             },
             resetModal() {
+                // this.userId = 0
                 this.title = ''
                 this.body = ''
             },
@@ -110,13 +117,8 @@
                 this.submitPost()
             },
             submitPost() {
-                let payload = {
-                    userId: this.userId,
-                    id: this.id,
-                    title: this.title, 
-                    body: this.body
-                }
-                this.$store.dispatch("addPost", payload)
+                console.log(this.form)
+                this.$store.dispatch("addPost", this.form)
             },
 
             // ...mapActions({
@@ -125,11 +127,15 @@
         },
         mounted() {
             this.plusPost();
+            this.apiPost();
         },
         computed: {
             rows() {
                 return this.lists.length
             },
+            apiPost(){
+                return this.$store.getters.apiPost
+            }
             // gettersUser() {
             //     // console.log(this.$store.getters.gettersUser)
             //     return this.$store.getters.gettersUser
